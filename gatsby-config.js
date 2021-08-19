@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://github.com/Milkin1/FunKids",
     title: "funPlay",
   },
   plugins: [

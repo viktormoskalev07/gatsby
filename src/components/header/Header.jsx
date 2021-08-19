@@ -1,49 +1,53 @@
 import {Link} from 'gatsby';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Burger from './Burger';
 import Logo from './logo.svg';
-const activeNav = {
-borderBottom: '1px solid rgba(0, 0, 0, 0.2)'
-}
-const StHeader = styled.header `
-text-align: center;
-display: flex;
-justify-content: space-between;
-align-items: center;
-border:solid red 1px;
-padding:10px;
-a{
-margin-right: 20px;
-padding: 5px; 
-}
-`
+import Nav from './Nav';
+import StyledVariables  from '../styles/StyledVariables';
+import Telegram from './Telegram';
+const {xs,sm,md} = StyledVariables;
+        const StHeader = styled.header `
+        position: sticky;
+        flex-wrap: wrap;
+        top: 0px;
+        background-color: #fff; 
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border:solid red 1px;
+        padding:10px; 
+` ;
+        const StLogo = styled.div `
+        width: 40px;
+            a{
+                display: block;
+            }
+        `;
+        const openCont= css`
+        display: flex;
+        `;
+        const closeCont= css`
+        display: none;
+        `;
+        const StyledNavContainer= styled.div`
+             ${({nav})=>nav?openCont:closeCont}
+            width: 100%;
+            justify-content: center;
+            flex-direction: column;
+        `;
 
-const StyledNav = styled.nav`
-flex-grow: 1;
-    ul{
-        display: flex; 
-        justify-content: center;
-        margin:0 10px;
-        padding:0;
-        list-style-type: none;
-    }
-  
-
-`
-const StLogo = styled.div `
-width: 40px;
-`
-const StContact = styled.div `
-display: flex;
-align-items: center;
-flex-shrink: 0;
-a , a:visited{
-color:black;
-margin-right: 20px;
-}
-`
-const Header = () => {
+        const StContact = styled.div `
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        a , a:visited{
+        color:black;
+        margin-right: 20px;
+        }
+        `
+const Header = () => { 
  const [navToggle, setnavToggle] = useState(false)
 return (
 <StHeader>
@@ -52,41 +56,28 @@ return (
         <img src={Logo} alt="logo" />
         </Link>
     </StLogo>
-       
-    <StyledNav>
-        <ul>
-            <li>
-                <Link activeStyle={activeNav} to='/'>Все варинты </Link>
-            </li>
-            <li>
-                <Link activeStyle={activeNav} to='/'>Все варинты </Link>
-            </li>
-            <li>
-                <Link activeStyle={activeNav} to='/'>Все варинты </Link>
-            </li>
-            <li>
-                <Link activeStyle={activeNav} to='/'>Все варинты </Link>
-            </li>
-        </ul>
-
-
-    </StyledNav>
+    <Burger nav={[navToggle, setnavToggle]}/>
+            <StyledNavContainer nav={navToggle}> 
+        <Nav/>
 
     <StContact>
         <a href="tel:0671231233">
             +380671231233</a>
-        <a href="http://tel">Написать в
-            <br />
-            Telegram</a>
+      <Telegram/>
         <button className='button'>
             заказать
             <br />
             консультацию
         </button>
     </StContact>
-    <Burger nav={[navToggle, setnavToggle]}/>
+    </StyledNavContainer>
+
 </StHeader>
 );
 }
 
 export default Header;
+
+
+
+

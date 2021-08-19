@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-const open = css`
+const close = css`
  width: 100%;
 `;
-const close = css`
+const open = css`
 position:absolute;
 left: 10px;
 right: 10px;
@@ -15,7 +15,7 @@ right: 10px;
   transform:rotate(-45deg);
 }
 &:nth-child(2){
-  transform:rotate(235deg);
+  transform:scale(0);
   opacity:0;
 }
 `;

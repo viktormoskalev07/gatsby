@@ -11,7 +11,9 @@ const GlobalStyles = createGlobalStyle`
         --orange:#F07E45;
     }
 
- 
+    *{
+        box-sizing: border-box;
+    }
    img{
        max-width:100%;
    }

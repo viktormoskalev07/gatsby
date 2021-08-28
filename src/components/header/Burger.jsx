@@ -20,6 +20,7 @@ right: 10px;
 }
 `;
 const StBurger=styled.button`
+align-self:flex-start;
 background-color: transparent;
 
 position: relative;

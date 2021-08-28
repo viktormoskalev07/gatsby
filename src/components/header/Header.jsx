@@ -11,31 +11,39 @@ const {xs,sm,md} = StyledVariables;
         position: sticky;
         flex-wrap: wrap;
         top: 0px;
+        transition: 0.5s;
+        height:${({nav})=>nav?'100vh':'75px'}; 
         background-color: #fff; 
         text-align: center;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        border:solid red 1px;
+        align-items: center; 
         padding:10px; 
 ` ;
         const StLogo = styled.div `
         width: 40px;
+        align-self: flex-start;
             a{
-                display: block;
+                display: block; 
             }
         `;
         const openCont= css`
-        display: flex;
+        max-height:100vh;
+
         `;
         const closeCont= css`
-        display: none;
+         max-height:0;
+      
+        
         `;
         const StyledNavContainer= styled.div`
+        transition: 0.5s;
+        overflow:hidden;
              ${({nav})=>nav?openCont:closeCont}
             width: 100%;
             justify-content: center;
             flex-direction: column;
+            
         `;
 
         const StContact = styled.div `
@@ -50,7 +58,7 @@ const {xs,sm,md} = StyledVariables;
 const Header = () => { 
  const [navToggle, setnavToggle] = useState(false)
 return (
-<StHeader>
+<StHeader nav={navToggle}>
     <StLogo>
         <Link to='index'>
         <img src={Logo} alt="logo" />

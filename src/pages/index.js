@@ -1,5 +1,5 @@
 import * as React from "react"
-import Main from "../components/main/main"
+import Main from "../components/main/Main.jsx"
 import Row , {Container} from "../components/styles/Grid" 
 const IndexPage = () => {
   return (
